@@ -1,6 +1,14 @@
 {
   "experiences": [
     {
+      "id": "exp-an-brog",
+      "titre": "An Bròg - Night Staff / Floor Team",
+      "periode": "Octobre 2025 - Présent",
+      "type": "job",
+      "details": "Imertion dans la forte activité du bar le plus fréquenter de cork. Decouvert du monde de la nuit de ces codes. Environnement à haute pression et à rythme soutenu pendant les heures de pointe. Focus sur l'efficacité, l'exécution rapide et le travail d'équipe constant. Gestion des tâches physiques et maintien des normes d'hygiène.",
+      "competences_cles": ["gestion-stress", "travail-equipe", "anglais-operationnel", "efficacite"]
+    },
+    {
       "id": "exp-region-occitanie",
       "titre": "La Région Occitanie - Gestionnaire de base de données",
       "periode": "Juillet 2025 - Août 2025",
@@ -63,17 +71,44 @@
       "type": "benevolat",
       "details": "Organisation logistique, recherche de sponsors et coordination des prestataires pour un événement sportif majeur.",
       "competences_cles": ["evenementiel", "sponsoring", "communication", "logistique"]
-    },
-    {
-      "id": "form-but",
-      "titre": "BUT Science des Données - IUT Lumière Lyon 2",
-      "periode": "Septembre 2021 - Septembre 2024",
-      "type": "formation",
-      "details": "Apprentissage des statistiques, du machine learning, de la gestion de projet data et des bases de données NoSQL.",
-      "competences_cles": ["python", "r", "neo4j", "postgresql", "machine-learning", "gestion-de-projet"]
     }
   ],
   "projets": [
+    {
+      "id": "proj-immersion-irlande",
+      "titre": "Immersion Professionnelle & Linguistique - Cork",
+      "exp_id": "exp-an-brog",
+      "skills": ["anglais-business", "adaptabilite-culturelle", "communication-interpersonnelle"],
+      "description": "**Objectif :** Développement de l'anglais courant et professionnel en milieu anglophone. Adaptation aux codes du travail irlandais et renforcement de la communication en situation de stress intense."
+    },
+    {
+      "id": "proj-adecco-sprint",
+      "titre": "Livreur de tabac - Sprint (2 mois)",
+      "exp_id": "exp-adecco-interim",
+      "skills": ["livraison-securisee", "optimisation-itineraire", "ponctualite"],
+      "description": "Transport et livraison sécurisée de marchandises sensibles. Optimisation des tournées pour respecter les délais de livraison."
+    },
+    {
+      "id": "proj-adecco-gls",
+      "titre": "Agent d'entrepôt - GLS (1 mois)",
+      "exp_id": "exp-adecco-interim",
+      "skills": ["logistique-flux", "tri-colis", "rapidite-execution"],
+      "description": "Opérations de déchargement, chargement et tri cadencé de colis au sein d'une plateforme logistique internationale."
+    },
+    {
+      "id": "proj-adecco-manutention",
+      "titre": "Installateur de matériel informatique (1 mois)",
+      "exp_id": "exp-adecco-interim",
+      "skills": ["maintenance-it", "manutention-precision", "configuration-poste"],
+      "description": "Livraison et installation physique d'équipements bureautiques complexes : serveurs, parcs informatiques et imprimantes réseau."
+    },
+    {
+      "id": "proj-adecco-laposte",
+      "titre": "Agent de tri - La Poste (1 mois)",
+      "exp_id": "exp-adecco-interim",
+      "skills": ["organisation-industrielle", "gestion-flux", "rigueur"],
+      "description": "Gestion des flux de colis sur plateforme industrielle. Respect des processus d'acheminement et des normes de qualité."
+    },
     {
       "id": "proj-stat-and-more",
       "titre": "Outil d'Aide à la Décision - Stat and More",
@@ -117,6 +152,9 @@
     { "id": "logistique", "nom": "Logistique" },
     { "id": "analyse-statistique", "nom": "Analyse Statistique" },
     { "id": "dataviz", "nom": "Visualisation de données" },
-    { "id": "relation-client", "nom": "Relation Client" }
+    { "id": "relation-client", "nom": "Relation Client" },
+    { "id": "anglais-operationnel", "nom": "Anglais Opérationnel" },
+    { "id": "adaptabilite-culturelle", "nom": "Adaptabilité Interculturelle" },
+    { "id": "gestion-stress", "nom": "Gestion du Stress" }
   ]
 }

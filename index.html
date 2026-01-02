@@ -12,7 +12,21 @@
         .animate-fade-in { 
             animation: fadeIn 0.4s ease-out forwards; 
         }
-        select { cursor: pointer; }
+        select { cursor: pointer; appearance: none; }
+        
+        /* Style pour la scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0071e3; }
+
+        /* Style spécifique pour les checkboxes transformées en boutons */
+        .type-checkbox:checked + span {
+            background-color: #0071e3;
+            color: white;
+            border-color: #0071e3;
+            box-shadow: 0 0 15px rgba(0, 113, 227, 0.4);
+        }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -23,74 +37,114 @@
                         'apple-blue': '#0071e3',
                         'dark-bg': '#1a1a1a',
                         'light-text': '#f5f5f7',
+                        'filter-panel': '#242426',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-dark-bg text-light-text font-sans">
+<body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue selection:text-white">
 
-    <header class="bg-gray-800 shadow-lg p-8 border-b border-gray-700">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl font-extrabold mb-2 tracking-tight">VICTOR LESUR</h1>
-            <p class="text-xl text-apple-blue mb-6 font-medium">Formation en Data Science</p>
-        </div>
+    <header class="sticky top-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10 px-8 py-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl font-black tracking-tighter text-white uppercase italic">
+                    Victor <span class="text-apple-blue not-italic">Lesur</span>
+                </h1>
+                <div class="flex items-center justify-center md:justify-start gap-2 mt-1">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Data Science & Analytics</p>
+                </div>
+            </div>
 
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="cv_page.html" class="bg-apple-blue hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition-all transform hover:-translate-y-1">Voir le CV</a>
-            <a href="https://www.linkedin.com/in/victor--lesur/" target="_blank" class="bg-gray-600 hover:bg-[#0077b5] text-white font-bold py-2 px-6 rounded-lg transition-all transform hover:-translate-y-1">LinkedIn</a>
-            <a href="contact.html" class="bg-apple-blue hover:bg-orange-500 text-white font-bold py-2 px-6 rounded-lg transition-all transform hover:-translate-y-1">Contact</a>
+            <nav class="flex items-center gap-3 bg-white/5 p-1.5 rounded-2xl border border-white/10">
+                <a href="cv_page.html" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all hover:bg-white/10 hover:text-apple-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Mon CV
+                </a>
+                <a href="https://www.linkedin.com/in/victor--lesur/" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all hover:bg-[#0077b5]/10 hover:text-[#0077b5]">
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="contact.html" class="bg-apple-blue hover:bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-apple-blue/20 transition-all transform hover:scale-105 active:scale-95">
+                    Me Contacter
+                </a>
+            </nav>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto p-8">
         
-        <div class="mb-6">
-            <label class="block text-sm font-medium mb-3 text-gray-500 uppercase tracking-widest text-xs">Catégories</label>
-            <div class="flex flex-wrap gap-4 bg-gray-800/50 p-3 rounded-xl border border-gray-700/50">
-                <label class="flex items-center space-x-2 cursor-pointer group">
-                    <input type="checkbox" value="pro" class="type-checkbox w-4 h-4 rounded border-gray-600 text-blue-500 focus:ring-blue-500 bg-gray-700">
-                    <span class="text-sm text-gray-400 group-hover:text-blue-400 transition-colors">Expérience Pro</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer group">
-                    <input type="checkbox" value="formation" class="type-checkbox w-4 h-4 rounded border-gray-600 text-emerald-500 focus:ring-emerald-500 bg-gray-700">
-                    <span class="text-sm text-gray-400 group-hover:text-emerald-400 transition-colors">Formation</span>
-                </label>
-                <label class="flex items-center space-x-2 cursor-pointer group">
-                    <input type="checkbox" value="job" class="type-checkbox w-4 h-4 rounded border-gray-600 text-amber-500 focus:ring-amber-500 bg-gray-700">
-                    <span class="text-sm text-gray-400 group-hover:text-amber-400 transition-colors">Jobs</span>
-                </label>
+        <div class="bg-filter-panel border border-white/10 rounded-3xl p-8 mb-12 shadow-2xl relative overflow-hidden">
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="bg-apple-blue/20 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-apple-blue" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight text-white/90 uppercase text-xs tracking-[0.2em]">Filtres & Exploration</h2>
+                </div>
+                <button id="reset-btn" class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl px-4 py-2 text-xs font-bold transition-all flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    Réinitialiser
+                </button>
             </div>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div>
-                <label class="block text-xs font-medium mb-2 text-gray-500 uppercase tracking-widest">Filtrer par Expérience</label>
-                <select id="filter-exp" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
-                    <option value="all">Toutes les expériences</option>
-                </select>
-            </div>
-            <div>
-                <label class="block text-xs font-medium mb-2 text-gray-500 uppercase tracking-widest">Projet spécifique</label>
-                <select id="filter-proj" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
-                    <option value="all">Tous les projets</option>
-                </select>
-            </div>
-            <div>
-                <label class="block text-xs font-medium mb-2 text-gray-500 uppercase tracking-widest">Compétence</label>
-                <select id="filter-skill" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
-                    <option value="all">Toutes les compétences</option>
-                </select>
-            </div>
-        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                
+                <div class="lg:col-span-5">
+                    <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-4">Catégories d'expériences</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="cursor-pointer">
+                            <input type="checkbox" value="pro" class="type-checkbox hidden">
+                            <span class="px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm font-semibold transition-all block">💼 Pro</span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" value="formation" class="type-checkbox hidden">
+                            <span class="px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm font-semibold transition-all block">🎓 Formation</span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="checkbox" value="job" class="type-checkbox hidden">
+                            <span class="px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm font-semibold transition-all block">🛠️ Jobs</span>
+                        </label>
+                    </div>
+                </div>
 
-        <div class="flex justify-between items-center mb-12">
-            <div id="filter-counter" class="text-xs font-mono font-bold bg-white/5 px-4 py-2 rounded-full border border-white/10"></div>
-            <button id="reset-btn" class="text-sm text-gray-500 hover:text-orange-400 transition-colors flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                Réinitialiser
-            </button>
+                <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative">
+                        <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Expérience</label>
+                        <select id="filter-exp" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
+                            <option value="all">Toutes</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Projet</label>
+                        <select id="filter-proj" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
+                            <option value="all">Tous</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">Skill</label>
+                        <select id="filter-skill" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-sm text-white focus:ring-2 focus:ring-apple-blue outline-none transition-all">
+                            <option value="all">Toutes</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <div id="filter-counter" class="text-[11px] font-mono text-gray-400"></div>
+                <div class="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-apple-blue w-2/3 shadow-[0_0_10px_#0071e3]"></div>
+                </div>
+            </div>
         </div>
 
         <section id="projets">
@@ -109,11 +163,8 @@
             setupFilters();
             loadFiltersFromURL();
 
-            // Listeners
             document.getElementById('reset-btn').addEventListener('click', resetAllFilters);
             document.querySelectorAll('.type-checkbox').forEach(cb => cb.addEventListener('change', () => { updateURL(); render(); }));
-            
-            // Gestion du clic sur les cartes d'expérience (Délégation d'événements)
             document.getElementById('results-container').addEventListener('click', handleGlobalClick);
 
             render(); 
@@ -123,6 +174,8 @@
     function setupFilters() {
         const fill = (id, items, key) => {
             const select = document.getElementById(id);
+            const firstOptText = select.options[0].textContent;
+            select.innerHTML = `<option value="all">${firstOptText}</option>`;
             items.forEach(item => {
                 const opt = document.createElement('option');
                 opt.value = item.id;
@@ -137,24 +190,19 @@
     }
 
     function handleGlobalClick(e) {
-        // Clic sur une carte d'expérience
         const expCard = e.target.closest('[data-exp-id]');
         if (expCard) {
             const expId = expCard.getAttribute('data-exp-id');
             document.getElementById('filter-exp').value = expId;
-            updateURL();
-            render();
+            updateURL(); render();
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
-
-        // Clic sur un Tag
         const tag = e.target.closest('[data-skill-id]');
         if (tag) {
             const skillId = tag.getAttribute('data-skill-id');
             document.getElementById('filter-skill').value = skillId;
-            updateURL();
-            render();
+            updateURL(); render();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
@@ -163,17 +211,13 @@
         const params = new URLSearchParams();
         const checkedTypes = Array.from(document.querySelectorAll('.type-checkbox:checked')).map(cb => cb.value);
         if (checkedTypes.length > 0) params.set('types', checkedTypes.join(','));
-
         const exp = document.getElementById('filter-exp').value;
         const proj = document.getElementById('filter-proj').value;
         const skill = document.getElementById('filter-skill').value;
-
         if (exp !== 'all') params.set('exp', exp);
         if (proj !== 'all') params.set('proj', proj);
         if (skill !== 'all') params.set('skill', skill);
-
-        const newPath = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-        history.pushState(null, '', newPath);
+        history.pushState(null, '', window.location.pathname + (params.toString() ? '?' + params.toString() : ''));
     }
 
     function loadFiltersFromURL() {
@@ -192,8 +236,7 @@
         document.getElementById('filter-exp').value = 'all';
         document.getElementById('filter-proj').value = 'all';
         document.getElementById('filter-skill').value = 'all';
-        updateURL();
-        render();
+        updateURL(); render();
     }
 
     function render() {
@@ -204,9 +247,9 @@
         const container = document.getElementById('results-container');
         const expDetailsContainer = document.getElementById('experience-details');
 
-        // Logic Cascade (Filtres intelligents)
         const validExps = portfolioData.experiences.filter(e => checkedTypes.length === 0 || checkedTypes.includes(e.type));
         const validExpIds = validExps.map(e => e.id);
+        
         Array.from(fExpSelect.options).forEach(opt => {
             if (opt.value === 'all') return;
             opt.disabled = !validExpIds.includes(opt.value);
@@ -215,32 +258,30 @@
         if (fExpSelect.options[fExpSelect.selectedIndex].disabled) fExpSelect.value = 'all';
 
         const fExp = fExpSelect.value;
-        const filteredProjs = portfolioData.projets.filter(p => {
-            const parentExp = portfolioData.experiences.find(e => e.id === p.exp_id);
-            const matchType = checkedTypes.length === 0 || checkedTypes.includes(parentExp?.type);
-            const matchExp = fExp === 'all' || p.exp_id === fExp;
-            return matchType && matchExp;
-        });
-
-        // Nettoyage avant rendu
-        container.innerHTML = '';
-        expDetailsContainer.innerHTML = '';
         const fProj = fProjSelect.value;
         const fSkill = fSkillSelect.value;
 
-        // Choix du mode d'affichage
+        container.innerHTML = '';
+        expDetailsContainer.innerHTML = '';
+
         if (fExp === 'all' && fProj === 'all' && fSkill === 'all') {
             renderPanorama(container, validExps);
         } else {
             renderFilteredView(fExp, fProj, fSkill, container, expDetailsContainer, checkedTypes);
         }
 
-        // Mise à jour du compteur
-        const finalProjCount = filteredProjs.filter(p => (fProj === 'all' || p.id === fProj) && (fSkill === 'all' || p.skills.includes(fSkill))).length;
+        const filteredProjsCount = portfolioData.projets.filter(p => {
+            const parentExp = portfolioData.experiences.find(e => e.id === p.exp_id);
+            const matchType = checkedTypes.length === 0 || checkedTypes.includes(parentExp?.type);
+            const matchExp = fExp === 'all' || p.exp_id === fExp;
+            const matchProj = fProj === 'all' || p.id === fProj;
+            const matchSkill = fSkill === 'all' || p.skills.includes(fSkill);
+            return matchType && matchExp && matchProj && matchSkill;
+        }).length;
+
         document.getElementById('filter-counter').innerHTML = `
-            <span class="text-blue-400">${(fExp === 'all') ? validExps.length : 1} Expériences</span>
-            <span class="mx-2 opacity-20">|</span>
-            <span class="text-purple-400">${finalProjCount} Projets affichés</span>
+            <span class="text-white font-bold">${validExps.length}</span> EXPÉRIENCES DISPONIBLES / 
+            <span class="text-apple-blue font-bold">${filteredProjsCount}</span> PROJETS FILTRÉS
         `;
     }
 
@@ -254,10 +295,8 @@
         list.forEach(exp => {
             const s = styles[exp.type] || styles.pro;
             const projs = portfolioData.projets.filter(p => p.exp_id === exp.id);
-            
-            // Extraction des compétences uniques pour cette expérience
             const allSkillIds = [...new Set(projs.flatMap(p => p.skills))];
-            const skillBadges = allSkillIds.map(sid => {
+            const skillBadges = allSkillIds.slice(0, 5).map(sid => {
                 const sk = portfolioData.competences.find(c => c.id === sid);
                 return sk ? `<span class="text-[10px] px-2 py-1 bg-gray-900/50 border border-gray-700 rounded text-gray-400">${sk.nom}</span>` : '';
             }).join('');
@@ -274,34 +313,29 @@
                         </div>
                         <div class="text-right">
                             <span class="${s.text} font-mono font-bold block">${exp.periode || ''}</span>
-                            <span class="text-[10px] text-gray-500 uppercase font-bold mt-1 block">Voir les détails →</span>
+                            <span class="text-[10px] text-gray-500 uppercase font-bold mt-1 block italic opacity-0 group-hover:opacity-100 transition-opacity tracking-widest">Détails →</span>
                         </div>
                     </div>
-                    
                     <div class="grid md:grid-cols-2 gap-8 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
                         <div>
-                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-tighter">Réalisations clés</p>
+                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Principales réalisations</p>
                             <ul class="space-y-2 text-sm text-gray-300">
-                                ${projs.slice(0, 3).map(p => `<li class="flex items-center"><span class="w-1 h-1 ${s.text.replace('text', 'bg')} rounded-full mr-2"></span>${p.titre}</li>`).join('')}
-                                ${projs.length > 3 ? `<li class="text-xs text-gray-500 italic">+ ${projs.length - 3} autres projets...</li>` : ''}
+                                ${projs.slice(0, 2).map(p => `<li class="flex items-center"><span class="w-1 h-1 ${s.text.replace('text', 'bg')} rounded-full mr-3"></span>${p.titre}</li>`).join('')}
                             </ul>
                         </div>
-                        
                         <div>
-                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-tighter">Compétences mobilisées</p>
-                            <div class="flex flex-wrap gap-2">
-                                ${skillBadges || '<span class="text-xs text-gray-600 italic">Multiples compétences</span>'}
-                            </div>
+                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Mots-clés</p>
+                            <div class="flex flex-wrap gap-2">${skillBadges}</div>
                         </div>
                     </div>
                 </div>`;
         });
     }
+
     function renderFilteredView(fExp, fProj, fSkill, container, expDetailsContainer, checkedTypes) {
-        // Bouton Retour
         expDetailsContainer.innerHTML = `
-            <button onclick="resetAllFilters()" class="mb-6 flex items-center gap-2 text-apple-blue hover:text-white transition-colors font-bold text-sm">
-                ← Retour au panorama
+            <button onclick="resetAllFilters()" class="mb-6 flex items-center gap-2 text-apple-blue hover:text-white transition-all font-bold text-sm group">
+                <span class="group-hover:-translate-x-1 transition-transform">←</span> Retour à la vue d'ensemble
             </button>`;
 
         if (fExp !== 'all') {
@@ -309,10 +343,11 @@
             if (exp) {
                 const color = exp.type === 'formation' ? 'text-emerald-400' : (exp.type === 'job' ? 'text-amber-400' : 'text-apple-blue');
                 expDetailsContainer.innerHTML += `
-                    <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 animate-fade-in mb-8 shadow-2xl">
-                        <h2 class="text-3xl font-extrabold text-white">${exp.titre}</h2>
-                        <p class="${color} mt-1 font-mono font-bold uppercase text-sm">${exp.type} — ${exp.periode || ''}</p>
-                        <p class="text-gray-300 mt-6 leading-relaxed text-lg border-l-4 border-apple-blue/30 pl-6 italic">"${exp.details || ''}"</p>
+                    <div class="bg-gray-800 p-8 rounded-3xl border border-white/10 animate-fade-in mb-8 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-8 text-6xl opacity-10 font-black uppercase italic">${exp.type}</div>
+                        <h2 class="text-3xl font-extrabold text-white relative z-10">${exp.titre}</h2>
+                        <p class="${color} mt-1 font-mono font-bold uppercase text-sm tracking-widest relative z-10">${exp.periode || ''}</p>
+                        <p class="text-gray-300 mt-8 leading-relaxed text-lg border-l-4 border-apple-blue pl-6 italic max-w-3xl">${exp.details || ''}</p>
                     </div>`;
             }
         }
@@ -327,17 +362,17 @@
             if (matchType && matchExp && matchProj && matchSkill) {
                 let borderClass = parentExp.type === 'formation' ? 'border-emerald-500' : (parentExp.type === 'job' ? 'border-amber-500' : 'border-blue-500');
                 container.innerHTML += `
-                    <div class="bg-gray-800/80 p-8 rounded-xl border-l-4 ${borderClass} shadow-lg animate-fade-in mb-6">
-                        <div class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-widest">${parentExp.titre}</div>
-                        <h3 class="text-2xl font-bold mb-4 text-white">${proj.titre}</h3>
-                        <div class="text-gray-300 mb-8 leading-relaxed">
+                    <div class="bg-gray-800/60 p-8 rounded-2xl border-l-4 ${borderClass} shadow-lg animate-fade-in mb-6 group hover:bg-gray-800/80 transition-all">
+                        <div class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-[0.2em]">${parentExp.titre}</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-apple-blue transition-colors">${proj.titre}</h3>
+                        <div class="text-gray-300 mb-8 leading-relaxed text-sm md:text-base">
                             ${proj.description.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')}
                         </div>
                         <div class="flex flex-wrap gap-2">
                             ${proj.skills.map(s => {
                                 const sk = portfolioData.competences.find(c => c.id === s);
                                 const isFocused = (fSkill === s);
-                                return `<span data-skill-id="${s}" class="cursor-pointer text-xs px-3 py-1.5 rounded-lg border transition-all ${isFocused ? 'bg-orange-500 border-orange-400 text-white shadow-lg shadow-orange-500/20' : 'bg-gray-900 text-gray-400 border-gray-700 hover:border-white'}">${sk ? sk.nom : s}</span>`;
+                                return `<span data-skill-id="${s}" class="cursor-pointer text-[11px] px-3 py-1.5 rounded-lg border transition-all ${isFocused ? 'bg-apple-blue border-apple-blue text-white shadow-lg' : 'bg-black/40 text-gray-400 border-white/5 hover:border-white/20'}">${sk ? sk.nom : s}</span>`;
                             }).join('')}
                         </div>
                     </div>`;
