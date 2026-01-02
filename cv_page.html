@@ -20,15 +20,13 @@
         }
     </script>
     <style>
-        /* Animation fluide pour l'affichage */
         .fade-in { animation: fadeIn 0.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Conteneur PDF responsive */
         .pdf-container {
             position: relative;
             width: 100%;
-            height: 80vh; /* Utilise 80% de la hauteur de l'écran */
+            height: 80vh;
             border-radius: 12px;
             overflow: hidden;
             background: #3a3a3c;
@@ -44,7 +42,7 @@
                 Retour Accueil
             </a>
             <div class="flex gap-2">
-                <span class="text-xs text-gray-500 bg-white/5 px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest font-bold">Curriculum Vitae</span>
+                <span class="text-xs text-gray-500 bg-white/5 px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest font-bold">Data Engineering & Science</span>
             </div>
         </div>
     </header>
@@ -54,18 +52,18 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
             <div>
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Mon Parcours</h1>
-                <p class="text-gray-400 mt-2 text-lg">Consultez ou téléchargez mon CV en deux langues.</p>
+                <p class="text-gray-400 mt-2 text-lg">BUT Science des Données | Data Engineer & BI Specialist</p>
             </div>
             
             <div class="flex flex-wrap gap-3">
-                 <a id="view-btn" href="CV_FR.pdf" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-xl transition duration-300 flex items-center gap-2 border border-white/10 text-sm">
-                    <span>↗</span> Visualiser plein écran
+                 <a id="view-btn" href="CV-Victor-Lesur-2026.pdf" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-xl transition duration-300 flex items-center gap-2 border border-white/10 text-sm">
+                    <span>↗</span> Plein écran
                 </a>
-                <a id="download-btn" href="CV_FR.pdf" download class="bg-apple-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-lg shadow-apple-blue/20 flex items-center gap-2 text-sm">
+                <a id="download-btn" href="CV-Victor-Lesur-2026.pdf" download class="bg-apple-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-lg shadow-apple-blue/20 flex items-center gap-2 text-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
-                    Télécharger .PDF
+                    Télécharger PDF (EN)
                 </a>
             </div>
         </div>
@@ -73,11 +71,11 @@
         <div class="bg-card-bg p-4 md:p-8 rounded-3xl shadow-2xl border border-white/5">
             
             <div class="flex items-center gap-4 mb-8 bg-black/20 p-2 rounded-2xl w-fit">
-                <button onclick="changeLang('CV_FR.pdf', this)" class="lang-btn px-6 py-2 rounded-xl bg-apple-blue text-white font-bold transition-all shadow-md">
+                <button onclick="changeLang('CV_FR.pdf', this)" class="lang-btn px-6 py-2 rounded-xl text-gray-400 hover:text-white transition-all font-bold">
                     Français
                 </button>
-                <button onclick="changeLang('CV_EN.pdf', this)" class="lang-btn px-6 py-2 rounded-xl text-gray-400 hover:text-white transition-all font-bold">
-                    English
+                <button onclick="changeLang('CV-Victor-Lesur-2026.pdf', this)" class="lang-btn px-6 py-2 rounded-xl bg-apple-blue text-white font-bold transition-all shadow-md">
+                    English (2026)
                 </button>
             </div>
 
@@ -85,17 +83,17 @@
                 <div class="absolute -inset-1 bg-gradient-to-r from-apple-blue to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
                 
                 <div class="pdf-container relative border border-white/10">
-                    <object id="cv-object" data="CV_FR.pdf" type="application/pdf" width="100%" height="100%">
+                    <object id="cv-object" data="CV-Victor-Lesur-2026.pdf" type="application/pdf" width="100%" height="100%">
                         <div class="flex flex-col items-center justify-center h-full p-10 text-center">
-                            <p class="text-xl mb-4 text-gray-300">L'aperçu du PDF ne peut pas être affiché sur votre appareil.</p>
-                            <a href="CV_FR.pdf" target="_blank" class="text-apple-blue underline font-bold text-lg">Cliquez ici pour l'ouvrir directement</a>
+                            <p class="text-xl mb-4 text-gray-300">L'aperçu du PDF ne peut pas être affiché ici.</p>
+                            <a href="CV-Victor-Lesur-2026.pdf" target="_blank" class="text-apple-blue underline font-bold text-lg">Ouvrir le fichier directement</a>
                         </div>
                     </object>
                 </div>
             </div>
             
             <p class="text-center text-gray-500 text-sm mt-6 font-mono uppercase tracking-tighter">
-                Dernière mise à jour : 2024
+                Dernière mise à jour : Janvier 2026
             </p>
         </div>
     </main>
@@ -106,8 +104,7 @@
             const downloadBtn = document.getElementById('download-btn');
             const viewBtn = document.getElementById('view-btn');
 
-            // 1. Mettre à jour les sources
-            // On remplace complètement l'objet pour forcer le rechargement sur certains navigateurs
+            // Mise à jour de l'affichage
             const newObject = objectElement.cloneNode(true);
             newObject.setAttribute('data', file);
             objectElement.parentNode.replaceChild(newObject, objectElement);
@@ -115,7 +112,7 @@
             downloadBtn.href = file;
             viewBtn.href = file;
 
-            // 2. Mettre à jour les styles des boutons
+            // Gestion de l'état actif des boutons
             document.querySelectorAll('.lang-btn').forEach(b => {
                 b.classList.remove('bg-apple-blue', 'text-white', 'shadow-md');
                 b.classList.add('text-gray-400');
