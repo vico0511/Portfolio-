@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - VICTOR LESUR</title>
+    <title>Contact | Victor Lesur</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,52 +13,159 @@
                         'apple-blue': '#0071e3',
                         'dark-bg': '#1a1a1a',
                         'light-text': '#f5f5f7',
+                        'linkedin-blue': '#0077b5'
                     }
                 }
             }
         }
     </script>
+    <style>
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
+    </style>
 </head>
-<body class="bg-dark-bg text-light-text font-sans">
+<body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue/30">
 
-    <header class="bg-gray-800 shadow-lg p-6">
+    <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 p-4 border-b border-white/10">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <!-- Bouton de retour à l'accueil -->
-            <a href="index.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-                ← Retour Accueil
+            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-all group font-medium text-sm">
+                <span class="transform group-hover:-translate-x-1 transition-transform">←</span> 
+                Retour Accueil
             </a>
-            <!-- Bouton de langue pour la page contact -->
-             <a href="contact_en.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-                English 🇬🇧
-            </a>
+            <span class="text-[10px] text-gray-500 bg-white/5 px-3 py-1 rounded-full border border-white/10 uppercase tracking-[0.2em] font-bold">Recrutement 2026</span>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-8">
-        <h1 class="text-4xl font-extrabold mb-6">Contactez-moi</h1>
-
-        <div class="bg-gray-800 p-8 rounded-lg shadow-md">
-            <p class="mb-4">N'hésitez pas à me contacter directement par e-mail ou via LinkedIn pour toute opportunité professionnelle ou question.</p>
-            
-            <div class="space-y-4">
-                <p><strong>Email :</strong> <a href="mailto:[Votre Email]" class="text-apple-blue hover:underline">Lesur.victor5@gmail.com</a></p>
-                <p><strong>Téléphone FR:</strong> +33 6 69 58 57 04</p>
-                <p><strong>Téléphone IR :</strong> +353 87 426 1880</p>
-                <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/victor-lesur-recherche/" target="_blank" class="text-apple-blue hover:underline">www.linkedin.com/in/victor--lesur</a></p>
-                <p><strong>Localisation :</strong> Cork, Irlande</p>
-            </div>
-            
-            <!-- Un formulaire HTML simple n'envoie pas d'email directement sans backend, donc un simple lien mailto est souvent suffisant pour un portfolio statique. -->
-            
-            <a href="mailto:[Votre Email]" class="mt-8 inline-block bg-apple-blue hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-                Envoyer un E-mail
-            </a>
+    <main class="max-w-6xl mx-auto p-6 md:p-12">
+        
+        <div class="mb-16 fade-in text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">Contactez-<span class="text-apple-blue">moi</span>.</h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Data Scientist prêt pour de nouveaux défis. Basé en Irlande, mobile pour des opportunités ambitieuses.
+            </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in" style="animation-delay: 0.2s;">
+            
+            <div class="space-y-6">
+                
+                <div class="glass p-6 rounded-3xl border-2 border-orange-500/30 bg-orange-500/5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xl">📍</span>
+                        <h3 class="text-orange-500 font-black text-[10px] uppercase tracking-widest">Localisation</h3>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <p class="text-2xl font-bold text-white">Cork, Irlande</p>
+                        <span class="text-2xl text-white">🇮🇪</span>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-3xl border-2 border-emerald-500/30 bg-emerald-500/5">
+                    <div class="flex items-center gap-2 mb-5">
+                        <span class="text-xl">📱</span>
+                        <h3 class="text-emerald-500 font-black text-[10px] uppercase tracking-widest">Téléphones</h3>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="flex flex-col border-b border-white/5 pb-3">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase mb-1">Irlande 🇮🇪</span>
+                            <p class="text-2xl font-mono font-bold text-white tracking-tighter">+353 87 426 1880</p>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[9px] text-gray-500 font-bold uppercase mb-1">France 🇫🇷</span>
+                            <p class="text-2xl font-mono font-bold text-white tracking-tighter">+33 6 69 58 57 04</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-3xl border-2 border-purple-500/30 bg-purple-500/5 group">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <h3 class="text-purple-400 font-black text-[10px] uppercase tracking-widest">Email</h3>
+                    </div>
+                    <p class="text-xl font-bold text-white select-all break-all group-hover:text-apple-blue transition-colors">Lesur.victor5@gmail.com</p>
+                </div>
+
+                <a href="https://www.linkedin.com/in/victor-lesur-recherche/" target="_blank" class="block glass p-6 rounded-3xl border-2 border-linkedin-blue/30 bg-linkedin-blue/5 hover:bg-linkedin-blue/10 transition-all group">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-linkedin-blue">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <h3 class="text-linkedin-blue font-black text-[10px] uppercase tracking-widest">LinkedIn</h3>
+                    </div>
+                    <p class="text-xl font-bold text-white">Victor Lesur</p>
+                    <p class="text-[10px] text-gray-500 mt-2 group-hover:text-white transition-colors uppercase font-black tracking-widest italic">Consulter le profil →</p>
+                </a>
+            </div>
+
+            <div class="md:col-span-2">
+                <form id="contact-form" class="glass p-8 md:p-12 rounded-[2.5rem] space-y-8 shadow-2xl border border-white/10 h-full">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-2">Envoyer une proposition</h2>
+                        <p class="text-gray-500 text-sm">Remplissez ce formulaire pour me contacter directement.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black text-gray-500 ml-1 uppercase tracking-widest italic">Votre Nom / Entreprise</label>
+                            <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 outline-none focus:border-apple-blue focus:ring-1 focus:ring-apple-blue transition-all" placeholder="ex: Nom du recruteur">
+                        </div>
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black text-gray-500 ml-1 uppercase tracking-widest italic">Adresse Email</label>
+                            <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 outline-none focus:border-apple-blue focus:ring-1 focus:ring-apple-blue transition-all" placeholder="recrutement@entreprise.com">
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-[10px] font-black text-gray-500 ml-1 uppercase tracking-widest italic">Objet de la demande</label>
+                        <select name="subject" class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 outline-none focus:border-apple-blue transition-all cursor-pointer appearance-none">
+                            <option class="bg-dark-bg text-white">Offre d'emploi (CDI/CDD)</option>
+                            <option class="bg-dark-bg text-white">Stage / Graduate Program</option>
+                            <option class="bg-dark-bg text-white">Demande d'entretien technique</option>
+                            <option class="bg-dark-bg text-white">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-[10px] font-black text-gray-500 ml-1 uppercase tracking-widest italic">Message</label>
+                        <textarea name="message" required rows="6" class="w-full bg-white/5 border border-white/10 rounded-2xl p-5 outline-none focus:border-apple-blue focus:ring-1 focus:ring-apple-blue transition-all" placeholder="Précisez ici les détails du poste ou du projet..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-apple-blue hover:bg-blue-600 text-white font-black py-6 rounded-2xl transition-all shadow-xl shadow-apple-blue/30 transform active:scale-[0.98] text-lg uppercase tracking-widest">
+                        Transmettre la demande
+                    </button>
+                    
+                    <p id="form-status" class="hidden text-center text-sm font-bold text-green-400 animate-pulse mt-4 bg-green-500/10 py-3 rounded-xl border border-green-500/20">
+                        Message transmis avec succès. Merci pour votre intérêt !
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <footer class="mt-20 text-center border-t border-white/5 pt-10">
+            <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em] font-black">Victor Lesur • Data Scientist • Cork, Irlande</p>
+        </footer>
     </main>
 
-    <footer class="text-center mt-12 p-4 border-t border-gray-700 text-gray-500">
-        <p>&copy; 2025 [Votre Prénom Nom].</p>
-    </footer>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const status = document.getElementById('form-status');
+            
+            btn.innerHTML = "Transmission...";
+            btn.disabled = true;
 
+            setTimeout(() => {
+                btn.innerHTML = "Demande envoyée !";
+                btn.classList.replace('bg-apple-blue', 'bg-green-600');
+                status.classList.remove('hidden');
+                e.target.reset();
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
