@@ -42,6 +42,7 @@
                 }
             }
         }
+
     </script>
 </head>
 <body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue selection:text-white">
@@ -174,7 +175,17 @@
 
             loadFiltersFromURL();
             render(); 
-        } catch (e) { console.error("Erreur chargement données", e); }
+        } catch (e) { 
+            console.error("Erreur chargement données", e);
+            document.getElementById('results-container').innerHTML = `
+                <div class="text-center p-10 bg-red-500/10 border border-red-500/20 rounded-2xl animate-fade-in">
+                    <svg class="w-12 h-12 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <p class="text-red-400 font-bold">Désolé, impossible de charger les projets.</p>
+                    <p class="text-gray-500 text-sm mt-2">Vérifiez que le fichier data.json est bien présent à la racine.</p>
+                </div>`;
+        }
     }
 
     function setupFilters() {
@@ -237,9 +248,19 @@
 
     function loadFiltersFromURL() {
         const params = new URLSearchParams(window.location.search);
+        
+        // 1. D'ABORD, on réinitialise tout par défaut
+        document.querySelectorAll('.type-checkbox').forEach(cb => cb.checked = false);
+        document.getElementById('filter-exp').value = 'all';
+        document.getElementById('filter-proj').value = 'all';
+        document.getElementById('filter-skill').value = 'all';
+
+        // 2. ENSUITE, on applique ce qu'il y a dans l'URL
         if (params.has('types')) {
             const types = params.get('types').split(',');
-            document.querySelectorAll('.type-checkbox').forEach(cb => { if (types.includes(cb.value)) cb.checked = true; });
+            document.querySelectorAll('.type-checkbox').forEach(cb => { 
+                if (types.includes(cb.value)) cb.checked = true; 
+            });
         }
         if (params.has('exp')) document.getElementById('filter-exp').value = params.get('exp');
         if (params.has('proj')) document.getElementById('filter-proj').value = params.get('proj');
@@ -479,6 +500,13 @@
     }
 
     init();
+    // Cet écouteur surveille le bouton "Précédent"
+    window.addEventListener('popstate', () => {
+        // 1. On relit les filtres qui sont maintenant dans l'URL
+        loadFiltersFromURL(); 
+        // 2. On redessine la page avec ces filtres
+        render(); 
+    });
 </script>
 </body>
 </html>

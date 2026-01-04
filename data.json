@@ -50,11 +50,11 @@
     },
     {
       "id": "exp-alliade",
-      "titre": "Alliade Habitat - Analyste en Études Statistiques",
+      "titre": "Alliade Habitat - Responsable des Études et Enquêtes (Alternance)",
       "periode": "Septembre 2022 - Septembre 2024",
       "type": "pro",
-      "details": "Réalisation d'enquêtes de satisfaction, analyse qualitative et quantitative, et automatisation de tableaux de bord KPI.",
-      "competences_cles": ["sphinx", "python", "powerbi", "sap", "analyse-statistique", "dataviz"]
+      "details": "Pilotage stratégique du pôle études : de la fiabilisation des données locataires (contexte de fusion) au déploiement d'enquêtes réglementaires. Gestion du cycle complet : budget, prestataires, analyse et restitution d'indicateurs clés (KPI).",
+      "competences_cles": ["sphinx-iq3", "vba", "gestion-de-projet", "data-quality", "strategie-donnees", "powerbi"]
     },
     {
       "id": "exp-area",
@@ -150,6 +150,41 @@
       "exp_id": "exp-region-occitanie",
       "skills": ["data-cleaning", "rigueur", "support-it"],
       "description": "Nettoyage et mise à jour systématique des dossiers usagers. Réduction du taux d'anomalies par un traitement rigoureux des requêtes téléphoniques."
+    },
+    {
+      "id": "proj-alliade-data-quality",
+      "titre": "Audit Data Quality & Post-Fusion",
+      "exp_id": "exp-alliade",
+      "skills": ["data-quality", "excel-vba", "kpi", "sql"],
+      "description": "**Objectif :** Garantir la fiabilité de la base locataire après fusions. Contrôle par échantillonnage, établissement de KPIs de qualité et collaboration avec la DSI pour les extractions complexes via SQL."
+    },
+    {
+      "id": "proj-alliade-enquetes-recursives",
+      "titre": "Maintenance du Cycle d'Enquêtes Récursives",
+      "exp_id": "exp-alliade",
+      "skills": ["planification", "analyse-transversale", "statistiques"],
+      "description": "**Objectif :** Déploiement et suivi des enquêtes récurrentes (mensuelles à triennales). Croisement des données historiques pour réaliser des analyses de tendances sur plusieurs exercices."
+    },
+    {
+      "id": "proj-alliade-enquete-az",
+      "titre": "Déploiement d'Enquête de A à Z",
+      "exp_id": "exp-alliade",
+      "skills": ["gestion-budget", "appel-offre", "analyse-qualitative"],
+      "description": "**Objectif :** Pilotage complet d'une nouvelle enquête. Rédaction du cahier des charges, choix du prestataire, gestion du taux de réponse (relances), analyse des résultats et création des visuels de présentation."
+    },
+    {
+      "id": "proj-alliade-sphinx-auto",
+      "titre": "Automatisation Dashboard Sphinx iQ3",
+      "exp_id": "exp-alliade",
+      "skills": ["sphinx-iq3", "automatisation", "dataviz"],
+      "description": "**Objectif :** Auto-formation sur Sphinx iQ3 pour concevoir une solution de reporting mensuel automatisée, fiable et fonctionnelle pour les directions métiers."
+    },
+    {
+      "id": "proj-alliade-memoire",
+      "titre": "Mémoire : Fiabilisation & Performance des Études",
+      "exp_id": "exp-alliade",
+      "skills": ["recherche-developpement", "strategie", "redaction-technique"],
+      "description": "**Objectif :** Étude théorique sur la fiabilisation des données locataires. Proposition d'outils innovants comme l'instauration d'un Portail Étude et Enquête (PEE) pour optimiser l'efficience du service."
     }
   ],
   "competences": [
