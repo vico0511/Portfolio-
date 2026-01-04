@@ -348,16 +348,23 @@
         list.forEach(exp => {
             const s = styles[exp.type] || styles.pro;
             const projs = portfolioData.projets.filter(p => p.exp_id === exp.id);
-            const allSkillIds = [...new Set(projs.flatMap(p => p.skills))];
             
-            // Limitation à 3 projets
+            // --- LOGIQUE DE FUSION DES COMPÉTENCES ---
+            // 1. On récupère les skills des projets
+            const projSkillIds = projs.flatMap(p => p.skills);
+            // 2. On récupère les compétences clés de l'expérience (si elles existent)
+            const expKeySkillIds = exp.competences_cles || [];
+            // 3. On fusionne et on utilise Set pour supprimer les doublons
+            const allSkillIds = [...new Set([...projSkillIds, ...expKeySkillIds])];
+            
             const DISPLAY_LIMIT = 3;
             const visibleProjs = projs.slice(0, DISPLAY_LIMIT);
             const remainingCount = projs.length - DISPLAY_LIMIT;
 
-            const skillBadges = allSkillIds.slice(0, 5).map(sid => {
+            // Génération des badges (on en affiche jusqu'à 6 pour ne pas encombrer)
+            const skillBadges = allSkillIds.slice(0, 6).map(sid => {
                 const sk = portfolioData.competences.find(c => c.id === sid);
-                return sk ? `<span class="text-[10px] px-2 py-1 bg-gray-900/50 border border-gray-700 rounded text-gray-400">${sk.nom}</span>` : '';
+                return sk ? `<span class="text-[9px] md:text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-gray-400 group-hover:border-white/30 transition-colors">${sk.nom}</span>` : '';
             }).join('');
 
             container.innerHTML += `
@@ -377,20 +384,23 @@
                     </div>
                     <div class="grid md:grid-cols-2 gap-6 md:gap-8 pointer-events-none opacity-90 md:opacity-80 group-hover:opacity-100 transition-opacity">
                         <div>
-                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Réalisations</p>
+                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Réalisations principales</p>
                             <ul class="space-y-2 text-sm text-gray-300">
-                                ${visibleProjs.map(p => `<li class="flex items-center"><span class="w-1.5 h-1.5 flex-shrink-0 ${s.text.replace('text', 'bg')} rounded-full mr-3"></span><span class="truncate">${p.titre}</span></li>`).join('')}
+                                ${visibleProjs.length > 0 
+                                    ? visibleProjs.map(p => `<li class="flex items-center"><span class="w-1.5 h-1.5 flex-shrink-0 ${s.text.replace('text', 'bg')} rounded-full mr-3"></span><span class="truncate">${p.titre}</span></li>`).join('')
+                                    : `<li class="italic text-gray-500 text-xs">Consulter les détails de l'expérience</li>`
+                                }
                             </ul>
                             ${remainingCount > 0 ? `
-                                <div class="mt-3 flex items-center gap-2">
-                                    <span class="px-2 py-1 rounded bg-white/10 text-[10px] font-bold text-white border border-white/20 shadow-sm group-hover:bg-apple-blue group-hover:border-apple-blue transition-colors">
-                                        + ${remainingCount} autres projets
+                                <div class="mt-3">
+                                    <span class="px-2 py-1 rounded bg-white/10 text-[10px] font-bold text-white border border-white/20">
+                                        + ${remainingCount} autres missions
                                     </span>
                                 </div>
                             ` : ''}
                         </div>
-                        <div class="hidden md:block">
-                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Compétences clés</p>
+                        <div>
+                            <p class="text-[10px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Expertise & Soft Skills</p>
                             <div class="flex flex-wrap gap-2">${skillBadges}</div>
                         </div>
                     </div>
@@ -404,17 +414,35 @@
                 <span class="group-hover:-translate-x-1 transition-transform">←</span> Retour à la vue d'ensemble
             </button>`;
 
+        // ... dans renderFilteredView ...
         if (fExp !== 'all') {
             const exp = portfolioData.experiences.find(e => e.id === fExp);
             if (exp) {
                 const color = exp.type === 'formation' ? 'text-emerald-400' : (exp.type === 'job' ? 'text-amber-400' : 'text-apple-blue');
+                
+                // --- NOUVEAU : Génération des badges pour les compétences clés de l'expérience ---
+                const keySkillsHtml = exp.competences_cles ? `
+                    <div class="mt-6">
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Compétences de l'expérience</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${exp.competences_cles.map(sId => {
+                                const sk = portfolioData.competences.find(c => c.id === sId);
+                                return `<span data-skill-id="${sId}" class="cursor-pointer text-[10px] px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400 hover:text-apple-blue hover:border-apple-blue transition-all">
+                                    ${sk ? sk.nom : sId}
+                                </span>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                ` : '';
+
                 expDetailsContainer.innerHTML += `
                     <div class="bg-gray-800 p-6 md:p-8 rounded-3xl border border-white/10 animate-fade-in mb-8 shadow-2xl relative overflow-hidden">
                         <div class="hidden md:block absolute top-0 right-0 p-8 text-8xl opacity-5 font-black uppercase italic select-none pointer-events-none">${exp.type}</div>
                         <h2 class="text-2xl md:text-3xl font-extrabold text-white relative z-10">${exp.titre}</h2>
                         <p class="${color} mt-1 font-mono font-bold uppercase text-xs md:text-sm tracking-widest relative z-10">${exp.periode || ''}</p>
                         <p class="text-gray-300 mt-6 leading-relaxed text-base md:text-lg border-l-4 border-apple-blue pl-4 md:pl-6 italic max-w-4xl">${exp.details || 'Aucune description détaillée disponible.'}</p>
-                    </div>`;
+                        
+                        ${keySkillsHtml} </div>`;
             }
         }
 

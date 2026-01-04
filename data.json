@@ -5,7 +5,7 @@
       "titre": "An Bròg - Night Staff / Floor Team",
       "periode": "Octobre 2025 - Présent",
       "type": "job",
-      "details": "Imertion dans la forte activité du bar le plus fréquenter de cork. Decouvert du monde de la nuit de ces codes. Environnement à haute pression et à rythme soutenu pendant les heures de pointe. Focus sur l'efficacité, l'exécution rapide et le travail d'équipe constant. Gestion des tâches physiques et maintien des normes d'hygiène.",
+      "details": "Imertion dans la forte activité du bar le plus fréquenter de cork. Decouvert du monde de la nuit de ces codes. nvironnement à haute pression et à rythme soutenu pendant les heures de pointe. Focus sur l'efficacité, l'exécution rapide et le travail d'équipe constant. Gestion des tâches physiques et maintien des normes d'hygiène.",
       "competences_cles": ["gestion-stress", "travail-equipe", "anglais-operationnel", "efficacite"]
     },
     {
@@ -136,6 +136,20 @@
       "exp_id": "exp-area",
       "skills": ["tableau", "sql", "excel"],
       "description": "**Objectif :** Identifier et classer les principaux délinquants pour des poursuites judiciaires."
+    },
+    {
+      "id": "proj-intersport-tech",
+      "titre": "Maintenance & Sécurité du parc de location",
+      "exp_id": "job-intersport",
+      "skills": ["maintenance-technique", "securite", "gestion-flux"],
+      "description": "Responsable du réglage des fixations selon les normes ISO (sécurité skieur) et de l'entretien quotidien de 50+ paires de skis."
+    },
+    {
+      "id": "proj-occitanie-data-quality",
+      "titre": "Fiabilisation de la Base de Données Usagers",
+      "exp_id": "exp-region-occitanie",
+      "skills": ["data-cleaning", "rigueur", "support-it"],
+      "description": "Nettoyage et mise à jour systématique des dossiers usagers. Réduction du taux d'anomalies par un traitement rigoureux des requêtes téléphoniques."
     }
   ],
   "competences": [
