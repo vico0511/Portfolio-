@@ -5,23 +5,24 @@
       "titre": "An Bròg - Night Staff / Floor Team",
       "periode": "Octobre 2025 - Présent",
       "type": "job",
-      "details": "Imertion dans la forte activité du bar le plus fréquenter de cork. Decouvert du monde de la nuit de ces codes. nvironnement à haute pression et à rythme soutenu pendant les heures de pointe. Focus sur l'efficacité, l'exécution rapide et le travail d'équipe constant. Gestion des tâches physiques et maintien des normes d'hygiène.",
+      "resume": "Imertion dans la forte activité du bar le plus fréquenter de cork. Decouvert du monde de la nuit de ces codes. nvironnement à haute pression et à rythme soutenu pendant les heures de pointe. Focus sur l'efficacité, l'exécution rapide et le travail d'équipe constant. Gestion des tâches physiques et maintien des normes d'hygiène.",
       "competences_cles": ["gestion-stress", "travail-equipe", "anglais-operationnel", "efficacite"]
     },
     {
       "id": "exp-region-occitanie",
-      "titre": "La Région Occitanie - Gestionnaire de base de données",
+      "titre": "La Région Occitanie - Gestionnaire de base de données (DGD IM)",
       "periode": "Juillet 2025 - Août 2025",
       "type": "pro",
-      "details": "Gestion et optimisation de la base de données (nettoyage, organisation). Traitement des demandes utilisateurs et suivi des requêtes au sein du centre d'appels.",
-      "competences_cles": ["sql", "gestion-bd", "support-utilisateur", "rigueur"]
+      "resume": "Gestion des données au sein du Service Régional des Mobilités (SRM 31). Optimisation du SI transport, traitement des requêtes usagers et fiabilisation des bases de données de mobilité.",
+      "details_complets": "<div class='space-y-4'><div><h4 class='text-white font-bold mb-1'>🏢 Organisation & Rattachement</h4><p>Mission effectuée au sein de la <strong>Direction Générale Déléguée Infrastructures et Mobilités (DGD IM)</strong>, rattaché spécifiquement au <strong>Service Régional des Mobilités de la Haute-Garonne (SRM 31)</strong>.</p></div><div><h4 class='text-white font-bold mb-1'>📍 Missions Mobilités</h4><ul class='list-disc pl-5 space-y-1'><li><strong>Gestion de Base de Données :</strong> Mise à jour et nettoyage des bases de données liées au réseau de transport régional (liO). Contrôle de la cohérence des données usagers et abonnements.</li><li><strong>Centre d'Appels & Support :</strong> Traitement des sollicitations des usagers (transports scolaires, lignes régulières). Analyse des requêtes et suivi des dossiers complexes au sein du centre de services.</li><li><strong>Fiabilisation du SI :</strong> Identification des anomalies de saisie, correction des doublons et optimisation de l'organisation des fichiers pour améliorer l'efficacité du service.</li><li><strong>Reporting :</strong> Extraction de statistiques sur les volumes d'appels et les typologies de demandes pour aider au pilotage de la satisfaction usager.</li></ul></div><div><h4 class='text-white font-bold mb-1'>🎯 Contexte</h4><p>Travail dans un environnement à fort flux de données, nécessitant une grande rigueur pour garantir la continuité du service public de transport et la qualité des réponses apportées aux citoyens.</p></div></div>",
+      "competences_cles": ["sql", "gestion-bd", "mobilites-transport", "support-utilisateur", "rigueur", "liO"]
     },
     {
       "id": "exp-adecco-interim",
       "titre": "ADECCO/RAS INTERIM - Travailleur Temporaire",
       "periode": "Avril 2025 - Juillet 2025",
       "type": "job",
-      "details": "Missions de logistique, manutention et livraison. Adaptabilité rapide à différents environnements de travail (quai, entrepôt, extérieur).",
+      "resume": "Missions de logistique, manutention et livraison. Adaptabilité rapide à différents environnements de travail (quai, entrepôt, extérieur).",
       "competences_cles": ["logistique", "polyvalence", "travail-equipe", "securite"]
     },
     {
@@ -29,7 +30,7 @@
       "titre": "Intersport - Vendeur / Technicien",
       "periode": "Février 2025 - Avril 2025",
       "type": "job",
-      "details": "Conseil technique, vente et location de matériel de montagne. Maintenance et réparation du matériel de ski.",
+      "resume": "Conseil technique, vente et location de matériel de montagne. Maintenance et réparation du matériel de ski.",
       "competences_cles": ["relation-client", "vente", "maintenance-technique", "gestion-caisse"]
     },
     {
@@ -37,7 +38,7 @@
       "titre": "La Bergerie - Serveur",
       "periode": "Janvier 2025 - Mars 2025",
       "type": "job",
-      "details": "Service en salle, prise de commandes et gestion de la caisse en période de forte affluence.",
+      "resume": "Service en salle, prise de commandes et gestion de la caisse en période de forte affluence.",
       "competences_cles": ["gestion-stress", "relation-client", "encaissement"]
     },
     {
@@ -45,23 +46,24 @@
       "titre": "BUT Science des Données - IUT Lumière Lyon 2",
       "periode": "Septembre 2021 - Septembre 2024",
       "type": "formation",
-      "details": "Apprentissage des statistiques, du machine learning, de la gestion de projet data et des bases de données NoSQL.",
+      "resume": "Apprentissage des statistiques, du machine learning, de la gestion de projet data et des bases de données NoSQL.",
       "competences_cles": ["python", "r", "neo4j", "postgresql", "machine-learning", "gestion-de-projet"]
     },
-    {
+{
       "id": "exp-alliade",
-      "titre": "Alliade Habitat - Analyste en Études Statistiques",
+      "titre": "Alliade Habitat - Responsable des Études et Enquêtes (Alternance)",
       "periode": "Septembre 2022 - Septembre 2024",
       "type": "pro",
-      "details": "Réalisation d'enquêtes de satisfaction, analyse qualitative et quantitative, et automatisation de tableaux de bord KPI.",
-      "competences_cles": ["sphinx", "python", "powerbi", "sap", "analyse-statistique", "dataviz"]
+      "resume": "Pilotage stratégique du pôle études : de la fiabilisation des données locataires au déploiement d'enquêtes réglementaires. Gestion du cycle complet : budget, prestataires, analyse et restitution d'indicateurs clés (KPI).",
+      "details_complets": "<div class='space-y-4'><div><h4 class='text-white font-bold mb-1'>🏢 Entreprise & Contexte</h4><p><strong>Alliade Habitat</strong> (Groupe Action Logement) : Premier bailleur social de la région AURA avec 57 000 logements et 128 000 locataires. Filiale d'<strong>Action Logement</strong>, acteur de référence d'utilité sociale facilitant l'accès au logement pour favoriser l'emploi.</p></div><div><h4 class='text-white font-bold mb-1'>📍 Mon Rôle</h4><p>Au sein de la <strong>Direction Déléguée aux Stratégies Territoriales (DDST)</strong>, j'ai piloté le service Enquêtes et Études du pôle Qualité et Satisfaction Clients.</p></div><div><h4 class='text-white font-bold mb-1'>🛠️ Missions Principales</h4><ul class='list-disc pl-5 space-y-1'><li><strong>Pilotage des Études :</strong> Recensement des besoins auprès des directions, définition des modalités de déploiement et réalisation des enquêtes de satisfaction.</li><li><strong>Analyse de Données :</strong> Collecte, analyse statistique des résultats et rédaction de rapports stratégiques incluant des recommandations opérationnelles.</li><li><strong>Fiabilisation & Qualité :</strong> Mise en œuvre de méthodes pour garantir la qualité des données et suivi des indicateurs clés via des tableaux de bord.</li><li><strong>Innovation Process :</strong> Automatisation des processus de traitement des données pour accroître la réactivité du service.</li></ul></div></div>",
+      "competences_cles": ["sphinx-iq3", "vba", "gestion-de-projet", "data-quality", "strategie-donnees", "powerbi"]
     },
     {
       "id": "exp-area",
       "titre": "AREA/APRR - Data Analyst (Stage)",
       "periode": "Avril 2021 - Juin 2021",
       "type": "pro",
-      "details": "Analyse de la fraude au péage et aide à la décision pour les poursuites judiciaires. Contribution au projet Flux Libre.",
+      "resume": "Analyse de la fraude au péage et aide à la décision pour les poursuites judiciaires. Contribution au projet Flux Libre.",
       "competences_cles": ["tableau", "sql", "excel", "analyse-fraude", "reporting"]
     },
     {
@@ -69,7 +71,7 @@
       "titre": "Open de France de Padel - Personnel Événementiel",
       "periode": "2016 - 2017",
       "type": "benevolat",
-      "details": "Organisation logistique, recherche de sponsors et coordination des prestataires pour un événement sportif majeur.",
+      "resume": "Organisation logistique, recherche de sponsors et coordination des prestataires pour un événement sportif majeur.",
       "competences_cles": ["evenementiel", "sponsoring", "communication", "logistique"]
     }
   ],
@@ -145,11 +147,47 @@
       "description": "Responsable du réglage des fixations selon les normes ISO (sécurité skieur) et de l'entretien quotidien de 50+ paires de skis."
     },
     {
-      "id": "proj-occitanie-data-quality",
-      "titre": "Fiabilisation de la Base de Données Usagers",
+      "id": "proj-occitanieè-campagne-rentree-2025",
+      "titre": "Campagne Transports Scolaires - Rentrée 2025",
       "exp_id": "exp-region-occitanie",
-      "skills": ["data-cleaning", "rigueur", "support-it"],
-      "description": "Nettoyage et mise à jour systématique des dossiers usagers. Réduction du taux d'anomalies par un traitement rigoureux des requêtes téléphoniques."
+      "skills": ["Data-Cleaning", "Reporting-KPI", "Traitement-Massif", "Relation-Usager", "Pic-Activité-Saisonnier"],
+      "description": "Pilotage opérationnel de la base de données usagers lors du pic d'activité annuel.",
+      "details_projet": "<div class='space-y-4'><p>Période critique de renouvellement des abonnements (Juillet-Août), nécessitant une gestion intensive des flux de données et des interactions usagers.</p><ul class='list-disc pl-5 space-y-2'><li><strong>Gestion de la Base & Appels :</strong> Responsable du traitement des appels entrants et de la mise à jour simultanée des dossiers pour garantir l'intégrité du référentiel.</li><li><strong>Support KPI :</strong> Extraction et préparation de données pour le service pilotage afin d'analyser l'avancement de la campagne.</li><li><strong>Logistique Transport :</strong> Contribution à la distribution et à l'organisation des parcours de lignes pour la rentrée scolaire 2025.</li><li><strong>Résolution d'Anomalies :</strong> Analyse des erreurs signalées par téléphone, correction technique en base et communication pédagogique auprès des usagers sur les solutions apportées.</li></ul></div>"
+    },
+    {
+      "id": "proj-alliade-data-quality",
+      "titre": "Audit Data Quality & Post-Fusion",
+      "exp_id": "exp-alliade",
+      "skills": ["data-quality", "excel-vba", "kpi", "sql"],
+      "description": "**Objectif :** Garantir la fiabilité de la base locataire après fusions. Contrôle par échantillonnage, établissement de KPIs de qualité et collaboration avec la DSI pour les extractions complexes via SQL."
+    },
+    {
+      "id": "proj-alliade-enquetes-recursives",
+      "titre": "Maintenance du Cycle d'Enquêtes Récursives",
+      "exp_id": "exp-alliade",
+      "skills": ["planification", "analyse-transversale", "statistiques"],
+      "description": "**Objectif :** Déploiement et suivi des enquêtes récurrentes (mensuelles à triennales). Croisement des données historiques pour réaliser des analyses de tendances sur plusieurs exercices."
+    },
+    {
+      "id": "proj-alliade-enquete-az",
+      "titre": "Déploiement d'Enquête de A à Z",
+      "exp_id": "exp-alliade",
+      "skills": ["gestion-budget", "appel-offre", "analyse-qualitative"],
+      "description": "**Objectif :** Pilotage complet d'une nouvelle enquête. Rédaction du cahier des charges, choix du prestataire, gestion du taux de réponse (relances), analyse des résultats et création des visuels de présentation."
+    },
+    {
+      "id": "proj-alliade-sphinx-auto",
+      "titre": "Automatisation Dashboard Sphinx iQ3",
+      "exp_id": "exp-alliade",
+      "skills": ["sphinx-iq3", "automatisation", "dataviz"],
+      "description": "**Objectif :** Auto-formation sur Sphinx iQ3 pour concevoir une solution de reporting mensuel automatisée, fiable et fonctionnelle pour les directions métiers."
+    },
+    {
+      "id": "proj-alliade-memoire",
+      "titre": "Mémoire : Fiabilisation & Performance des Études",
+      "exp_id": "exp-alliade",
+      "skills": ["recherche-developpement", "strategie", "redaction-technique"],
+      "description": "**Objectif :** Étude théorique sur la fiabilisation des données locataires. Proposition d'outils innovants comme l'instauration d'un Portail Étude et Enquête (PEE) pour optimiser l'efficience du service."
     }
   ],
   "competences": [

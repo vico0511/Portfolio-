@@ -27,6 +27,16 @@
             border-color: #0071e3;
             box-shadow: 0 0 15px rgba(0, 113, 227, 0.4);
         }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); border-color: rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 113, 227, 0); border-color: rgba(255, 255, 255, 0.7); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 113, 227, 0); border-color: rgba(255, 255, 255, 0.7); }
+        }
+
+        .animate-pulse-white {
+            animation: pulse-border 2s infinite;
+        }
+        
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,6 +52,7 @@
                 }
             }
         }
+
     </script>
 </head>
 <body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue selection:text-white">
@@ -174,7 +185,17 @@
 
             loadFiltersFromURL();
             render(); 
-        } catch (e) { console.error("Erreur chargement données", e); }
+        } catch (e) { 
+            console.error("Erreur chargement données", e);
+            document.getElementById('results-container').innerHTML = `
+                <div class="text-center p-10 bg-red-500/10 border border-red-500/20 rounded-2xl animate-fade-in">
+                    <svg class="w-12 h-12 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <p class="text-red-400 font-bold">Désolé, impossible de charger les projets.</p>
+                    <p class="text-gray-500 text-sm mt-2">Vérifiez que le fichier data.json est bien présent à la racine.</p>
+                </div>`;
+        }
     }
 
     function setupFilters() {
@@ -237,9 +258,19 @@
 
     function loadFiltersFromURL() {
         const params = new URLSearchParams(window.location.search);
+        
+        // 1. D'ABORD, on réinitialise tout par défaut
+        document.querySelectorAll('.type-checkbox').forEach(cb => cb.checked = false);
+        document.getElementById('filter-exp').value = 'all';
+        document.getElementById('filter-proj').value = 'all';
+        document.getElementById('filter-skill').value = 'all';
+
+        // 2. ENSUITE, on applique ce qu'il y a dans l'URL
         if (params.has('types')) {
             const types = params.get('types').split(',');
-            document.querySelectorAll('.type-checkbox').forEach(cb => { if (types.includes(cb.value)) cb.checked = true; });
+            document.querySelectorAll('.type-checkbox').forEach(cb => { 
+                if (types.includes(cb.value)) cb.checked = true; 
+            });
         }
         if (params.has('exp')) document.getElementById('filter-exp').value = params.get('exp');
         if (params.has('proj')) document.getElementById('filter-proj').value = params.get('proj');
@@ -414,13 +445,11 @@
                 <span class="group-hover:-translate-x-1 transition-transform">←</span> Retour à la vue d'ensemble
             </button>`;
 
-        // ... dans renderFilteredView ...
         if (fExp !== 'all') {
             const exp = portfolioData.experiences.find(e => e.id === fExp);
             if (exp) {
                 const color = exp.type === 'formation' ? 'text-emerald-400' : (exp.type === 'job' ? 'text-amber-400' : 'text-apple-blue');
                 
-                // --- NOUVEAU : Génération des badges pour les compétences clés de l'expérience ---
                 const keySkillsHtml = exp.competences_cles ? `
                     <div class="mt-6">
                         <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3">Compétences de l'expérience</p>
@@ -432,17 +461,29 @@
                                 </span>`;
                             }).join('')}
                         </div>
-                    </div>
-                ` : '';
+                    </div>` : '';
 
                 expDetailsContainer.innerHTML += `
                     <div class="bg-gray-800 p-6 md:p-8 rounded-3xl border border-white/10 animate-fade-in mb-8 shadow-2xl relative overflow-hidden">
                         <div class="hidden md:block absolute top-0 right-0 p-8 text-8xl opacity-5 font-black uppercase italic select-none pointer-events-none">${exp.type}</div>
                         <h2 class="text-2xl md:text-3xl font-extrabold text-white relative z-10">${exp.titre}</h2>
                         <p class="${color} mt-1 font-mono font-bold uppercase text-xs md:text-sm tracking-widest relative z-10">${exp.periode || ''}</p>
-                        <p class="text-gray-300 mt-6 leading-relaxed text-base md:text-lg border-l-4 border-apple-blue pl-4 md:pl-6 italic max-w-4xl">${exp.details || 'Aucune description détaillée disponible.'}</p>
-                        
-                        ${keySkillsHtml} </div>`;
+                        <p class="text-gray-300 mt-6 leading-relaxed text-base md:text-lg border-l-4 border-apple-blue pl-4 md:pl-6 italic max-w-4xl">
+                            ${exp.resume || 'Aucun résumé disponible.'}
+                        </p>
+                        ${exp.details_complets ? `
+                            <button onclick="toggleDetails()" 
+                                    class="absolute bottom-6 right-6 z-20 flex items-center gap-2 px-4 py-2 bg-apple-blue/10 border-2 border-apple-blue rounded-full text-[10px] font-black uppercase tracking-tighter text-apple-white transition-all hover:bg-apple-blue hover:text-white animate-pulse-white group">
+                                <span id="btn-text">Détails Experience</span>
+                                <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform group-hover:scale-125" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div id="more-details" class="hidden mt-8 pt-8 border-t border-white/5 text-gray-300 text-sm md:text-base leading-relaxed animate-fade-in pb-12">
+                                ${exp.details_complets}
+                            </div>` : ''}
+                        ${keySkillsHtml}
+                    </div>`;
             }
         }
 
@@ -455,8 +496,22 @@
             if (fProj !== 'all' && proj.id !== fProj) return;
 
             const parentExp = portfolioData.experiences.find(e => e.id === proj.exp_id);
-            let borderClass = parentExp.type === 'formation' ? 'border-emerald-500' : (parentExp.type === 'job' ? 'border-amber-500' : 'border-blue-500');
             
+            // --- LOGIQUE DE COULEUR DYNAMIQUE POUR LE BOUTON ---
+            let colorClass = 'text-apple-blue border-apple-blue/30';
+            let hoverClass = 'hover:text-white hover:border-apple-blue';
+            let borderClass = 'border-blue-500';
+
+            if (parentExp.type === 'formation') {
+                colorClass = 'text-emerald-400 border-emerald-400/30';
+                hoverClass = 'hover:text-emerald-200 hover:border-emerald-400';
+                borderClass = 'border-emerald-500';
+            } else if (parentExp.type === 'job') {
+                colorClass = 'text-amber-400 border-amber-400/30';
+                hoverClass = 'hover:text-amber-200 hover:border-amber-400';
+                borderClass = 'border-amber-500';
+            }
+
             container.innerHTML += `
                 <div class="bg-gray-800/60 p-6 md:p-8 rounded-2xl border-l-4 ${borderClass} shadow-lg animate-fade-in mb-6 group hover:bg-gray-800/80 transition-all">
                     <div class="flex justify-between items-start">
@@ -464,9 +519,28 @@
                         ${fSkill !== 'all' ? '<span class="text-[10px] bg-apple-blue/20 text-apple-blue px-2 py-1 rounded border border-apple-blue/30 font-bold">MATCH</span>' : ''}
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold mb-4 text-white group-hover:text-apple-blue transition-colors">${proj.titre}</h3>
-                    <div class="text-gray-300 mb-8 leading-relaxed text-sm md:text-base">
+                    
+                    <div class="text-gray-300 mb-4 leading-relaxed text-sm md:text-base">
                         ${proj.description ? proj.description.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>') : ''}
                     </div>
+
+                    ${proj.details_projet ? `
+                        <div class="mb-6">
+                            <button onclick="toggleProjectDetails('${proj.id}')" 
+                                    id="btn-project-${proj.id}"
+                                    class="inline-flex items-center gap-2 py-1 text-[11px] font-black uppercase tracking-widest transition-all border-b-2 group ${colorClass} ${hoverClass}">
+                                <span id="btn-project-text-${proj.id}">Détails de la mission</span>
+                                <svg id="btn-project-icon-${proj.id}" xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            
+                            <div id="project-details-${proj.id}" class="hidden mt-4 p-5 bg-black/20 rounded-xl border-l border-white/10 text-gray-400 text-xs md:text-sm leading-relaxed animate-fade-in">
+                                ${proj.details_projet}
+                            </div>
+                        </div>
+                    ` : ''}
+
                     <div class="flex flex-wrap gap-2">
                         ${proj.skills.map(s => {
                             const sk = portfolioData.competences.find(c => c.id === s);
@@ -477,8 +551,47 @@
                 </div>`;
         });
     }
+    function toggleDetails() {
+        const detailDiv = document.getElementById('more-details');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const btn = event.currentTarget; // Récupère le bouton cliqué
 
+        if (detailDiv.classList.contains('hidden')) {
+            detailDiv.classList.remove('hidden');
+            btnText.textContent = "Fermer";
+            btnIcon.classList.add('rotate-180');
+            btn.classList.remove('animate-pulse-white'); // On arrête de clignoter quand c'est ouvert
+        } else {
+            detailDiv.classList.add('hidden');
+            btnText.textContent = "Détails Mission";
+            btnIcon.classList.remove('rotate-180');
+            btn.classList.add('animate-pulse-white'); // On recommence à clignoter
+        }
+    }
+    function toggleProjectDetails(projectId) {
+        const detailDiv = document.getElementById(`project-details-${projectId}`);
+        const btnText = document.getElementById(`btn-project-text-${projectId}`);
+        const btnIcon = document.getElementById(`btn-project-icon-${projectId}`);
+
+        if (detailDiv.classList.contains('hidden')) {
+            detailDiv.classList.remove('hidden');
+            btnText.textContent = "Fermer";
+            btnIcon.classList.add('rotate-180');
+        } else {
+            detailDiv.classList.add('hidden');
+            btnText.textContent = "Détails de la mission";
+            btnIcon.classList.remove('rotate-180');
+        }
+    }
     init();
+    // Cet écouteur surveille le bouton "Précédent"
+    window.addEventListener('popstate', () => {
+        // 1. On relit les filtres qui sont maintenant dans l'URL
+        loadFiltersFromURL(); 
+        // 2. On redessine la page avec ces filtres
+        render(); 
+    });
 </script>
 </body>
 </html>
