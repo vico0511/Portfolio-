@@ -248,17 +248,28 @@
         const expCard = e.target.closest('[data-exp-id]');
         if (expCard) {
             const expId = expCard.getAttribute('data-exp-id');
+            
+            // On met à jour la valeur du select
             document.getElementById('filter-exp').value = expId;
             document.getElementById('filter-proj').value = 'all';
-            updateURL(); render();
+            
+            // IMPORTANT : On valide, on met à jour l'URL et on RELANCE le rendu immédiatement
+            validateSelections('filter-exp');
+            updateURL(); 
+            render(); // C'est cette ligne qui évite de devoir recharger la page
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
+        
         const tag = e.target.closest('[data-skill-id]');
         if (tag) {
             const skillId = tag.getAttribute('data-skill-id');
             document.getElementById('filter-skill').value = skillId;
-            updateURL(); render();
+            
+            updateURL(); 
+            render(); // Idem ici
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
