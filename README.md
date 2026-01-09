@@ -24,8 +24,13 @@ Hébergement : GitHub Pages.
 📂 Structure des Fichiers
 
 ├── index.html            # Page principale (SPA avec filtrage JS).
-├── contact.html          # Formulaire de contact dynamique.
+
+|── contact.html          # Formulaire de contact dynamique.
+
 ├── cv_page.html          # Visionneuse de CV avec sélecteur de langue.
+
 ├── data.json             # La "Base de données" du portfolio.
+
 ├── CV-Victor-Lesur-2026-Fr.pdf.
+
 └── CV-Victor-Lesur-2026-En.pdf.
