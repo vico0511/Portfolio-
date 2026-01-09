@@ -26,74 +26,72 @@
         .pdf-container {
             position: relative;
             width: 100%;
-            height: 80vh;
-            border-radius: 12px;
+            height: 70vh; /* Réduit légèrement pour mieux voir les boutons sur mobile */
+            border-radius: 20px;
             overflow: hidden;
             background: #3a3a3c;
         }
+
+        /* Empêcher le zoom auto sur mobile */
+        @media (max-width: 768px) {
+            .pdf-container { height: 60vh; }
+        }
     </style>
 </head>
-<body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue selection:text-white">
+<body class="bg-dark-bg text-light-text font-sans selection:bg-apple-blue/30">
 
     <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 p-4 border-b border-white/10">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-all group">
+            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-all group font-medium text-sm">
                 <span class="transform group-hover:-translate-x-1 transition-transform">←</span> 
-                Retour Accueil
+                Accueil
             </a>
-            <div class="flex gap-2">
-                <span class="text-xs text-gray-500 bg-white/5 px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest font-bold">Data Engineering & Science</span>
-            </div>
+            <span class="text-[10px] text-gray-500 bg-white/5 px-3 py-1 rounded-full border border-white/10 uppercase tracking-widest font-bold">Curriculum Vitae</span>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto p-6 md:p-12 fade-in">
+    <main class="max-w-5xl mx-auto p-5 md:p-12 fade-in">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6 text-center md:text-left">
             <div>
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Mon Parcours</h1>
-                <p class="text-gray-400 mt-2 text-lg">BUT Science des Données | Data Engineer & BI Specialist</p>
+                <p class="text-gray-400 mt-2 text-lg">Data Scientist | Recrutement 2026</p>
             </div>
             
-            <div class="flex flex-wrap gap-3">
-                 <a id="view-btn" href="CV-Victor-Lesur-2026.pdf" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-6 rounded-xl transition duration-300 flex items-center gap-2 border border-white/10 text-sm">
-                    <span>↗</span> Plein écran
+            <div class="flex flex-col sm:flex-row gap-3">
+                 <a id="view-btn" href="CV-Victor-Lesur-2026-Fr.pdf" target="_blank" class="bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-6 rounded-xl transition-all border border-white/10 text-sm">
+                    Plein écran ↗
                 </a>
-                <a id="download-btn" href="CV-Victor-Lesur-2026.pdf" download class="bg-apple-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition duration-300 shadow-lg shadow-apple-blue/20 flex items-center gap-2 text-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Télécharger PDF (EN)
+                <a id="download-btn" href="CV-Victor-Lesur-2026-Fr.pdf" download class="bg-apple-blue hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-apple-blue/20 flex items-center justify-center gap-2 text-sm">
+                    Télécharger PDF
                 </a>
             </div>
         </div>
 
-        <div class="bg-card-bg p-4 md:p-8 rounded-3xl shadow-2xl border border-white/5">
+        <div class="bg-card-bg p-3 md:p-8 rounded-[2rem] shadow-2xl border border-white/5">
             
-            <div class="flex items-center gap-4 mb-8 bg-black/20 p-2 rounded-2xl w-fit">
-                <button onclick="changeLang('CV_FR.pdf', this)" class="lang-btn px-6 py-2 rounded-xl text-gray-400 hover:text-white transition-all font-bold">
-                    Français
+            <div class="flex items-center gap-2 mb-6 bg-black/40 p-1.5 rounded-2xl w-full md:w-fit">
+                <button onclick="changeLang('CV-Victor-Lesur-2026-Fr.pdf', this)" class="lang-btn flex-1 md:flex-none px-6 py-3 rounded-xl bg-apple-blue text-white font-bold transition-all shadow-md text-sm">
+                    Français 🇫🇷
                 </button>
-                <button onclick="changeLang('CV-Victor-Lesur-2026.pdf', this)" class="lang-btn px-6 py-2 rounded-xl bg-apple-blue text-white font-bold transition-all shadow-md">
-                    English (2026)
+                <button onclick="changeLang('CV-Victor-Lesur-2026-En.pdf', this)" class="lang-btn flex-1 md:flex-none px-6 py-3 rounded-xl text-gray-400 hover:text-white transition-all font-bold text-sm">
+                    English 🇬🇧
                 </button>
             </div>
 
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-apple-blue to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
-                
-                <div class="pdf-container relative border border-white/10">
-                    <object id="cv-object" data="CV-Victor-Lesur-2026.pdf" type="application/pdf" width="100%" height="100%">
-                        <div class="flex flex-col items-center justify-center h-full p-10 text-center">
-                            <p class="text-xl mb-4 text-gray-300">L'aperçu du PDF ne peut pas être affiché ici.</p>
-                            <a href="CV-Victor-Lesur-2026.pdf" target="_blank" class="text-apple-blue underline font-bold text-lg">Ouvrir le fichier directement</a>
+            <div class="relative">
+                <div class="pdf-container border border-white/10 shadow-inner">
+                    <object id="cv-object" data="CV-Victor-Lesur-2026-Fr.pdf" type="application/pdf" width="100%" height="100%">
+                        <div class="flex flex-col items-center justify-center h-full p-8 text-center bg-gray-900/50">
+                            <p class="text-lg mb-6 text-gray-400 font-medium">L'aperçu ne s'affiche pas sur votre appareil.</p>
+                            <a href="CV-Victor-Lesur-2026-Fr.pdf" target="_blank" class="bg-apple-blue text-white px-8 py-4 rounded-2xl font-bold shadow-xl">Ouvrir le CV (PDF)</a>
                         </div>
                     </object>
                 </div>
             </div>
             
-            <p class="text-center text-gray-500 text-sm mt-6 font-mono uppercase tracking-tighter">
-                Dernière mise à jour : Janvier 2026
+            <p class="text-center text-gray-600 text-[10px] mt-6 font-black uppercase tracking-[0.2em]">
+                Mise à jour : Janvier 2026 • Cork, Irlande
             </p>
         </div>
     </main>
@@ -104,15 +102,27 @@
             const downloadBtn = document.getElementById('download-btn');
             const viewBtn = document.getElementById('view-btn');
 
-            // Mise à jour de l'affichage
-            const newObject = objectElement.cloneNode(true);
-            newObject.setAttribute('data', file);
+            // On crée un nouvel objet pour forcer le navigateur à recharger le fichier
+            const newObject = document.createElement('object');
+            newObject.id = 'cv-object';
+            newObject.data = file;
+            newObject.type = 'application/pdf';
+            newObject.width = '100%';
+            newObject.height = '100%';
+            
+            // Fallback pour mobile si l'objet ne charge pas
+            newObject.innerHTML = `
+                <div class="flex flex-col items-center justify-center h-full p-8 text-center bg-gray-900/50">
+                    <p class="text-lg mb-6 text-gray-400 font-medium">L'aperçu ne s'affiche pas sur votre appareil.</p>
+                    <a href="${file}" target="_blank" class="bg-apple-blue text-white px-8 py-4 rounded-2xl font-bold shadow-xl">Ouvrir le CV (PDF)</a>
+                </div>`;
+
             objectElement.parentNode.replaceChild(newObject, objectElement);
 
             downloadBtn.href = file;
             viewBtn.href = file;
 
-            // Gestion de l'état actif des boutons
+            // Mise à jour visuelle des boutons
             document.querySelectorAll('.lang-btn').forEach(b => {
                 b.classList.remove('bg-apple-blue', 'text-white', 'shadow-md');
                 b.classList.add('text-gray-400');
