@@ -25,7 +25,7 @@ Hébergement : GitHub Pages.
 
 ├── index.html            # Page principale (SPA avec filtrage JS).
 
-|── contact.html          # Formulaire de contact dynamique.
+├── contact.html          # Formulaire de contact dynamique.
 
 ├── cv_page.html          # Visionneuse de CV avec sélecteur de langue.
 
