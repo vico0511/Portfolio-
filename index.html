@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Victor Lesur</title>
+    <link rel="icon" type="image/png" href="Favicon.png">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -90,6 +91,19 @@
         select {
             color-scheme: dark; /* Indique au navigateur que le menu doit être en mode sombre */
         }
+        /* Taille de texte réduite pour les listes déroulantes sur mobile */
+        @media (max-width: 768px) {
+            select, select option {
+                font-size: 11px !important; /* Texte plus petit sur portable */
+                padding: 8px !important;
+            }
+        }
+
+        /* Couleurs pour la différenciation dans la liste */
+        .opt-pro { color: #0071e3 !important; }      /* Bleu Apple */
+        .opt-etudes { color: #34d399 !important; }   /* Émeraude */
+        .opt-job { color: #fbbf24 !important; }      /* Ambre */
+
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -259,22 +273,45 @@
     }
 
     function setupFilters() {
-        const fill = (id, items, key) => {
-            const select = document.getElementById(id);
-            const firstOptText = select.options[0].textContent;
-            select.innerHTML = `<option value="all">${firstOptText}</option>`;
-            items.forEach(item => {
-                const opt = document.createElement('option');
-                opt.value = item.id;
-                opt.textContent = item[key] || item.nom || item.titre;
-                select.appendChild(opt);
-            });
-        };
-        fill('filter-exp', portfolioData.experiences, 'titre');
-        fill('filter-proj', portfolioData.projets, 'titre');
-        fill('filter-skill', portfolioData.competences, 'nom');
-    }
+        const fExp = document.getElementById('filter-exp');
+        const fProj = document.getElementById('filter-proj');
+        const fSkill = document.getElementById('filter-skill');
 
+        // 1. Remplissage Expériences avec symboles discrets
+        fExp.innerHTML = '<option value="all">Toutes les expériences</option>';
+        portfolioData.experiences.forEach(exp => {
+            let prefix = "• "; // Symbole par défaut
+            if(exp.type === 'pro') prefix = "💼 ";
+            else if(exp.type === 'formation') prefix = "🎓 ";
+            else if(exp.type === 'job') prefix = "🛠️ ";
+
+            const opt = document.createElement('option');
+            opt.value = exp.id;
+            opt.textContent = prefix + exp.titre;
+            opt.className = "bg-[#1a1a1a] text-gray-300"; // Fond sombre, texte gris clair
+            fExp.appendChild(opt);
+        });
+
+        // 2. Remplissage Projets
+        fProj.innerHTML = '<option value="all">Tous les projets</option>';
+        portfolioData.projets.forEach(proj => {
+            const opt = document.createElement('option');
+            opt.value = proj.id;
+            opt.textContent = "↳ " + proj.titre; // Indente les projets pour montrer la hiérarchie
+            opt.className = "bg-[#1a1a1a] text-gray-400";
+            fProj.appendChild(opt);
+        });
+
+        // 3. Remplissage Compétences
+        fSkill.innerHTML = '<option value="all">Toutes les compétences</option>';
+        portfolioData.competences.forEach(sk => {
+            const opt = document.createElement('option');
+            opt.value = sk.id;
+            opt.textContent = "⚡ " + sk.nom;
+            opt.className = "bg-[#1a1a1a] text-gray-300";
+            fSkill.appendChild(opt);
+        });
+    }
     function validateSelections(changedFilterId) {
         const expVal = document.getElementById('filter-exp').value;
         const projVal = document.getElementById('filter-proj').value;
